@@ -1,0 +1,23 @@
+name: Basic CI
+
+on: push # this github action will run when we push code
+
+jobs:
+  build:
+    runs-on: ubuntu-latest # this is our build platform - the OS that will run our build
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6 # this will checkout ( download ) our code so that we can build it
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Create production build
+        run: npm run build
