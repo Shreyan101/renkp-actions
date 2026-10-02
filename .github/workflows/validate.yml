@@ -8,3 +8,5 @@ jobs:
         uses: actions/checkout@v6
       - name: validate file
         run: test -f src/components/navBar/index.js
+      - name: validate js file
+        run: node --check src/components/navBar/index.js
