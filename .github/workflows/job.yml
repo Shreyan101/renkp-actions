@@ -1,9 +1,10 @@
 name: Jobs Test
 on:
-  workflow_run:
-    workflows: [Basic CI, validate, Second Workflow]
-    types:
-      - completed
+  workflow_dispatch
+  # workflow_run:
+  #   workflows: [Basic CI, validate, Second Workflow]
+  #   types:
+  #     - completed
 jobs:
   validate-html-file:
     if: ${{ github.event.workflow_run.conclusion == 'success' }}

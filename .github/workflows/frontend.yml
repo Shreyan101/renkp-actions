@@ -19,5 +19,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Run ESlint in app
+        run: npm run lint
+
       - name: Create production build
-        run: Exit 1
+        run: npm run build
