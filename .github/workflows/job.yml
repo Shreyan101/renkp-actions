@@ -1,7 +1,7 @@
 name: Jobs Test
 on:
   workflow_run:
-    workflows: [Basic CI, validate]
+    workflows: [Basic CI, validate, Second Workflow]
     types:
       - completed
 jobs:
