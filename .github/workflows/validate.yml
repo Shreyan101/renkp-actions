@@ -1,12 +1,26 @@
 name: validate
+
 on: push
+
 jobs:
   validate-file:
     runs-on: ubuntu-latest
+
     steps:
       - name: checkout repository
         uses: actions/checkout@v6
+
+      - name: setup node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: install dependencies
+        run: npm ci
+
       - name: validate file
         run: test -f src/components/navBar/index.js
+
       - name: validate js file
         run: npx eslint src/components/navBar/index.js
