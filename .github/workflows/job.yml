@@ -1,0 +1,42 @@
+name: Jobs Test
+on: workflow_dispatch
+jobs:
+  validate-html-file:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v6
+
+      - name: validate html file
+        run: test -f index.html
+
+  validate-file-exist:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v6
+
+      - name: validate navbar file
+        run: test -f src/components/navBar/index.js
+
+  validate-js-file:
+    # needs: ["validate-file-exist", "validate-html-file"]
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v6
+
+      - name: setup node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: install dependencies
+        run: npm ci
+
+      - name: validate js file
+        run: npx eslint src/components/navBar/index.js
