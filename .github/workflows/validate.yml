@@ -9,4 +9,4 @@ jobs:
       - name: validate file
         run: test -f src/components/navBar/index.js
       - name: validate js file
-        run: node --check src/components/navBar/index.js
+        run: npx eslint src/components/navBar/index.js
