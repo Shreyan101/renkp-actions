@@ -1,6 +1,6 @@
 name: Basic CI
 
-on: push # this github action will run when we push code
+on: workflow_dispatch # this github action will run when we push code
 
 jobs:
   build:
